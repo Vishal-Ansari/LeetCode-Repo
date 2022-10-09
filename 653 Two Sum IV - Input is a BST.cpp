@@ -1,3 +1,4 @@
+// First approach with vector
 class Solution {
 public:
     vector<int>v;
@@ -20,5 +21,50 @@ public:
             else left++;
         }
         return false;
+    }
+};
+
+
+
+
+
+
+//Second approach with set with another function
+
+class Solution {
+public:
+   unordered_set<int>st;
+    
+    bool dfs(TreeNode* root,int k){
+        if(!root) return false;
+        if(st.find(k-root->val)!=st.end())
+            return true;
+        st.insert(root->val);
+        
+        return dfs(root->left,k)|| dfs(root->right,k);
+    }
+    
+    bool findTarget(TreeNode* root, int k) {
+       return dfs(root,k);
+    }
+};
+
+
+
+
+
+//withoud another function
+
+class Solution {
+public:
+   unordered_set<int>st;
+    
+    bool findTarget(TreeNode* root, int k) {
+       if(!root) return false;
+        if(st.find(k-root->val)!=st.end())
+            return true;
+        st.insert(root->val);
+        
+        return findTarget(root->left,k)|| findTarget(root->right,k);
     }
 };
