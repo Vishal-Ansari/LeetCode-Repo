@@ -18,5 +18,35 @@ public:
     }
 };
 
-// or simply
-//return max_element(arr.begin(),arr.end())-arr.begin();
+
+
+
+
+// class Solution {
+// public:
+//     int peakIndexInMountainArray(vector<int>& arr) {
+//         int s=0,end=arr.size()-1, ans=-1;
+//         while(s<end){
+//             int mid=s+(end-s)/2;
+//             if(arr[mid]>arr[mid+1]){
+//                 ans=mid;
+//                 end=mid;
+//             }
+//             else{
+//                 ans=mid+1;
+//                 s=mid+1;
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
+
+
+
+// class Solution {
+// public:
+//     int peakIndexInMountainArray(vector<int>& arr) {
+//         return max_element(arr.begin(),arr.end())-arr.begin();
+//     }
+// };
