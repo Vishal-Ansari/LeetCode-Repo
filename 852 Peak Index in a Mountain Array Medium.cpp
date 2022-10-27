@@ -17,3 +17,6 @@ public:
             return flag;
     }
 };
+
+// or simply
+//return max_element(arr.begin(),arr.end())-arr.begin();
