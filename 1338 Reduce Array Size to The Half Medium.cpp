@@ -22,3 +22,39 @@ public:
         return ans;
     }
 };
+
+
+
+
+
+
+class Solution {
+public:
+    int minSetSize(vector<int>& arr) {
+        unordered_map<int,int>mp;
+        for(int i=0;i<arr.size();i++)
+        {
+            mp[arr[i]]++;
+        }
+        int size=mp.size();
+        int curr_size=0;
+        priority_queue<pair<int,int>>pq;
+        for(auto it=mp.begin();it!=mp.end();it++)
+        {
+            pq.push({it->second,it->first});
+        }
+        int ans=0;
+        while(!pq.empty())
+        {
+            int s=pq.top().first;
+            pq.pop();
+            curr_size=curr_size+s;
+            ans++;
+            if(curr_size>=arr.size()/2)
+            {
+                break;
+            }
+        }
+        return ans;
+    }
+};
