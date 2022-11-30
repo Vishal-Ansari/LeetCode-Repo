@@ -11,14 +11,16 @@ public:
                 q.push(d);
             }
             else if(ladders>0){
-                int x=q.top();
-                if(x>d){
+                if(q.size()){
+                    int x=q.top();
+                    if(x>d){
                     bricks+=x;
                     q.pop();
-                    q.push(x);
+                    q.push(d);
                     bricks-=d;
+                    }
                 }
-                ladders--;
+                  ladders--;
 
             }
             else break;
