@@ -16,6 +16,29 @@ public:
 
 
 
+class Solution {
+public:
+    int threeSumMulti(vector<int>& arr, int target) {
+        long long ans = 0, mod = 1e9 + 7;
+        unordered_map<int, long long> mp;
+        for( int a : arr) mp[a]++;
+
+        for( auto it: mp){
+            for(auto it2: mp){
+                int i=it.first, j=it2.first , k=target-i-j;
+                if(!mp.count(k)) continue;
+                if(i==j && j==k) ans+=mp[i]*(mp[i]-1)*(mp[i]-2)/6;
+                else if(i==j && j!=k) ans+=mp[i]*(mp[i]-1)/2*mp[k];
+                else if(i<j && j<k) ans+=mp[i]*mp[j]*mp[k];
+            }
+        }
+        return ans%mod;
+    }
+};
+
+
+
+
 
 
 
