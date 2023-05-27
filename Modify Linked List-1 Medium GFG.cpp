@@ -25,7 +25,7 @@ class Solution{
         return prev;
     }
     
-    void updateValue(Node* &slow,Node* &head){
+    void update(Node* &slow,Node* &head){
         Node* ptr = head;
         while(slow){
             int temp = ptr->data;
@@ -49,7 +49,7 @@ class Solution{
         Node* ptr = head;
         slow = slow->next;
         
-        updateValue(slow,head);
+        update(slow,head);
     
         slow = findMedian(head);
         slow_next = slow->next;
