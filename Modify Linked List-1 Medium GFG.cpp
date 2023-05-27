@@ -1,6 +1,5 @@
 class Solution{
     public:
-
     Node* findMedian(Node* head){
         if(!head)
             return head;
