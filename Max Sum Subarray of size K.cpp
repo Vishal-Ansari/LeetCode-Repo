@@ -1,4 +1,7 @@
-long  ans = 0, sum = 0;
+class Solution{   
+public:
+    long maximumSumSubarray(int K, vector<int> &Arr , int N){
+       long  ans = 0, sum = 0;
         for(int i = 0; i < N; i++){
             if(i < K) 
                 sum += Arr[i];
@@ -10,3 +13,5 @@ long  ans = 0, sum = 0;
         }
         ans = max(ans,sum);
         return ans;
+    }
+};
