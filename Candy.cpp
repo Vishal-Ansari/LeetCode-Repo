@@ -1,25 +1,24 @@
 class Solution {
   public:
     int minCandy(int N, vector<int> &ratings) {
-        int s = 0;
-        int dp[N] = {0};
-        for (int i = 1; i < N; i++) {
-            find_dp(ratings, dp, i, i - 1);
-            find_dp(ratings, dp, N - i - 1, N - i);
+        if(N==0) return 0;
+        vector<int> left(N,0);
+        vector<int> right(N,0);
+        left[0]=1;
+        right[N-1]=1;
+        for(int i=1;i<N;i++){
+            if(ratings[i]>ratings[i-1])    left[i]=left[i-1]+1;
+            else                           left[i]=1;
         }
-        for (int i = 0; i < N; i++) {
-            
-            s += dp[i] + 1;
+        for(int i=N-2;i>=0;i--){
+            if(ratings[i]>ratings[i+1])    right[i]=right[i+1]+1;
+            else                           right[i]=1;
         }
-        return s;
-    }
-    
-    void find_dp(vector<int> &ratings, int* dp, int mx, int mn){
-        if (ratings[mn] < ratings[mx]) {
-            dp[mx] = dp[mx] > 0 ? max(dp[mx], dp[mn] + 1) : dp[mn] + 1;
+        
+        int ans=0;
+        for(int i=0;i<N;i++){
+            ans+=max(left[i],right[i]);
         }
-    }
-    int max(int a, int b) {
-        return a > b ? a : b;
+        return ans;
     }
 };
