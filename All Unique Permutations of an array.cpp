@@ -4,7 +4,7 @@ class Solution {
         vector<vector<int>> ans;
         set<vector<int>> st;
         ans.push_back(arr);
-        s.insert(arr);
+        st.insert(arr);
         if(n==1) return ans;
         while(true){
             int ind = -1;
@@ -21,7 +21,7 @@ class Solution {
                 }
             }
             reverse(arr.begin()+ind+1, arr.end());
-            if(st.find(arr)!=s.end()) 
+            if(st.find(arr)!=st.end()) 
                 break;  
             ans.push_back(arr);
             st.insert(arr);
