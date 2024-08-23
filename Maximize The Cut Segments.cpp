@@ -3,6 +3,7 @@ class Solution
     public:
      int solve(int n, int x, int y, int z,int sum,vector<int>& dp){
         if(sum==n) return 0;
+         if(sum>n) return INT_MIN; //this condition is required to check if the the whole line is cut into segments and doesnot give any remainder
         if(dp[sum]!=-1) return dp[sum];
         int one=INT_MIN,  two=INT_MIN,  three=INT_MIN;
         one=solve(n,x,y,z,sum+x,dp);
